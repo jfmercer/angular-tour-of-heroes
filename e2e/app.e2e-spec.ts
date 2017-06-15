@@ -7,8 +7,8 @@ describe('cheese-plate App', () => {
     page = new CheesePlatePage();
   });
 
-  it('should display welcome message', () => {
+  it('should have cheese', async() => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(await page.getParagraphText()).toEqual('Tour of Cheeses');
   });
 });
