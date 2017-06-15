@@ -1,0 +1,9 @@
+<div *ngIf="cheese">
+  <h2>{{cheese.name}} details!</h2>
+  <div><label>id: </label>{{cheese.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="cheese.name" placeholder="name"/>
+  </div>
+</div>
+
