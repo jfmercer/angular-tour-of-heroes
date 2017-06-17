@@ -1,0 +1,8 @@
+<h3>Top Cheeses</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let cheese of cheeses" [routerLink]="['/detail', cheese.id]" class="col-1-4">
+    <div class="module cheese">
+      <h4>{{ cheese.name }}</h4>
+    </div>
+  </a>
+</div>

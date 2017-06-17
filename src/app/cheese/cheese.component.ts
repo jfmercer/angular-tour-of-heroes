@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Cheese } from '../cheese';
 import { CheeseService } from '../cheese.service';
@@ -14,7 +14,9 @@ export class CheeseComponent implements OnInit {
   selectedCheese: Cheese;
   cheeses: Cheese[];
 
-  constructor(private cheeseService: CheeseService) {}
+  constructor(
+    private cheeseService: CheeseService,
+    private router: Router) {}
 
   onSelect(cheese: Cheese): void {
     this.selectedCheese = cheese;
@@ -27,5 +29,9 @@ export class CheeseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCheeses();
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectedCheese.id]);
   }
 }

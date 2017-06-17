@@ -6,4 +6,9 @@
     <span class="badge">{{cheese.id}}</span> {{cheese.name}}
   </li>
 </ul>
-<app-cheese-detail [cheese]="selectedCheese"></app-cheese-detail>
+<div *ngIf="selectedCheese">
+  <h2>
+    {{ selectedCheese.name | uppercase }} is tasty
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

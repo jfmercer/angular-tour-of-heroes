@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { CheeseDetailComponent } from './cheese-detail.component';
-import { FormsModule } from '@angular/forms';
+import { CheeseService } from '../cheese.service';
 
 describe('CheeseDetailComponent', () => {
   let component: CheeseDetailComponent;
@@ -12,6 +13,9 @@ describe('CheeseDetailComponent', () => {
       declarations: [ CheeseDetailComponent ],
       imports: [
         FormsModule
+      ],
+      providers: [
+        CheeseService
       ]
     })
     .compileComponents();
