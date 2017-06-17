@@ -4,17 +4,22 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CheeseDetailComponent } from './cheese-detail/cheese-detail.component';
+import { CheeseComponent } from './cheese/cheese.component';
+import { CheeseService } from './cheese.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CheeseDetailComponent
+    CheeseDetailComponent,
+    CheeseComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CheeseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

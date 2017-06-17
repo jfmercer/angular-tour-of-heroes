@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CheeseDetailComponent } from './cheese-detail/cheese-detail.component';
+import { CheeseComponent } from './cheese/cheese.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        CheeseDetailComponent
+        CheeseDetailComponent,
+        CheeseComponent
       ]
     }).compileComponents();
   }));
