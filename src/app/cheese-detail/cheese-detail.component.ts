@@ -30,4 +30,9 @@ export class CheeseDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  save(): void {
+    this.cheeseService.update(this.cheese)
+      .then(() => this.goBack());
+  }
 }

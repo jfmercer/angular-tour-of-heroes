@@ -4,8 +4,18 @@
     [class.selected]="cheese === selectedCheese"
     (click)="onSelect(cheese)">
     <span class="badge">{{cheese.id}}</span> {{cheese.name}}
+    <button class="delete"
+      (click)="delete(cheese); $event.stopPropagation()">x</button>
   </li>
 </ul>
+
+<div>
+  <label>Cheese name:</label> <input #cheeseName />
+  <button (click)="add(cheeseName.value); cheeseName.value=''">
+    Add
+  </button>
+</div>
+
 <div *ngIf="selectedCheese">
   <h2>
     {{ selectedCheese.name | uppercase }} is tasty

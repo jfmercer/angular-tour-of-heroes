@@ -18,8 +18,26 @@ export class CheeseComponent implements OnInit {
     private cheeseService: CheeseService,
     private router: Router) {}
 
+  ngOnInit(): void {
+    this.getCheeses();
+  }
+
+  gotoDetail(): void {
+    this.router.navigate(['/detail', this.selectedCheese.id]);
+  }
+
   onSelect(cheese: Cheese): void {
     this.selectedCheese = cheese;
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.cheeseService.create(name)
+      .then(cheese => {
+        this.cheeses.push(cheese);
+        this.selectedCheese = null;
+      })
   }
 
   getCheeses(): void {
@@ -27,11 +45,12 @@ export class CheeseComponent implements OnInit {
       .then(cheeses => this.cheeses = cheeses);
   }
 
-  ngOnInit(): void {
-    this.getCheeses();
-  }
-
-  gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedCheese.id]);
+  delete(cheese: Cheese): void {
+    this.cheeseService
+      .delete(cheese.id)
+      .then(() => {
+        this.cheeses = this.cheeses.filter(c => c !== cheese);
+        if (this.selectedCheese === cheese) { this.selectedCheese = null; }
+      })
   }
 }
