@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
-import { CheeseService } from '../cheese.service';
+import { CheeseService } from '../services/cheese.service';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;

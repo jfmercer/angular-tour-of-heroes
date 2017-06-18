@@ -1,5 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Cheese } from './cheese';
+import { Cheese } from '../cheese';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {

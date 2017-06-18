@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Cheese } from '../cheese';
-import { CheeseService } from '../cheese.service';
+import { CheeseService } from '../services/cheese.service';
 
 @Component({
   selector: 'app-dashboard',

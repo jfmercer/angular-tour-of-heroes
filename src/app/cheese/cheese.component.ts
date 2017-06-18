@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Cheese } from '../cheese';
-import { CheeseService } from '../cheese.service';
+import { CheeseService } from '../services/cheese.service';
 
 @Component({
   selector: 'app-cheese',

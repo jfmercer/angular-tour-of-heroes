@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Cheese } from '../cheese';
-import { CheeseService } from '../cheese.service';
+import { CheeseService } from '../services/cheese.service';
 
 @Component({
   selector: 'app-cheese-detail',
