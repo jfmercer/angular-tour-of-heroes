@@ -22,14 +22,16 @@ export class CheeseService {
 
   getCheese(id: number): Promise<Cheese> {
     const url = `${this.cheesesUrl}/${id}`;
-    return this.http.get(url)
+    return this.http
+      .get(url, { headers: this.headers })
       .toPromise()
       .then(response => response.json().data as Cheese)
       .catch(this.handleError);
   }
 
   getCheeses(): Promise<Cheese[]> {
-    return this.http.get(this.cheesesUrl)
+    return this.http
+      .get(this.cheesesUrl, { headers: this.headers })
       .toPromise()
       .then(response => response.json().data as Cheese[])
       .catch(this.handleError);
