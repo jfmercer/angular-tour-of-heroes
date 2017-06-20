@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 7.10.0
+
+general:
+  artifacts:
+    - "coverage"
+
+test:
+  override:
+    - ng test --code-coverage --single-run
+  post:
+    - mkdir -p $CIRCLE_ARTIFACTS/node-7.10.0
+    - mv coverage $CIRCLE_ARTIFACTS/node-7.10.0/coverage-report
