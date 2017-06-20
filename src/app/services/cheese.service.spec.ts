@@ -13,7 +13,7 @@ import { Http,
 import { CheeseService } from './cheese.service';
 import { Cheese } from '../cheese';
 
-fdescribe('CheeseService', () => {
+describe('CheeseService', () => {
   let cheese: Cheese;
 
   beforeEach(() => {
@@ -45,9 +45,10 @@ fdescribe('CheeseService', () => {
     spyOn(cheeseService, 'handleError');
     let response;
     expectUrl(mockBackend, 'api/cheeses/7', cheese, RequestMethod.Get)
-    cheeseService.getCheese(7).then((success) => {
-      response = success;
-    });
+    cheeseService.getCheese(7)
+      .then((success) => {
+        response = success;
+      });
     tick();
     expect(response.id).toEqual(7);
     expect(cheeseService.handleError).not.toHaveBeenCalled();
