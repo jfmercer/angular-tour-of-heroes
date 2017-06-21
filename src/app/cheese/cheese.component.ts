@@ -11,7 +11,7 @@ import { CheeseService } from '../services/cheese.service';
   providers: [CheeseService]
 })
 export class CheeseComponent implements OnInit {
-  selectedCheese: Cheese;
+  selectedCheese: Cheese | undefined;
   cheeses: Cheese[];
 
   constructor(
@@ -23,7 +23,9 @@ export class CheeseComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedCheese.id]);
+    if (this.selectedCheese) {
+      this.router.navigate(['/detail', this.selectedCheese.id]);
+    }
   }
 
   onSelect(cheese: Cheese): void {
@@ -36,7 +38,7 @@ export class CheeseComponent implements OnInit {
     this.cheeseService.create(name)
       .then(cheese => {
         this.cheeses.push(cheese);
-        this.selectedCheese = null;
+        this.selectedCheese = undefined;
       })
   }
 
@@ -50,7 +52,7 @@ export class CheeseComponent implements OnInit {
       .delete(cheese.id)
       .then(() => {
         this.cheeses = this.cheeses.filter(c => c !== cheese);
-        if (this.selectedCheese === cheese) { this.selectedCheese = null; }
+        if (this.selectedCheese === cheese) { this.selectedCheese = undefined; }
       })
   }
 }
