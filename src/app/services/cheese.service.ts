@@ -55,7 +55,7 @@ export class CheeseService {
       .catch(this.handleError);
   }
 
-  private handleError(error: any): Promise<any> {
+  handleError(error: any): Promise<any> {
     console.error('An error has occurred', error);
     return Promise.reject(error.message || error);
   }

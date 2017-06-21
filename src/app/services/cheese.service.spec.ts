@@ -40,10 +40,11 @@ describe('CheeseService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('GETs one cheese', inject([CheeseService, MockBackend],
-                              fakeAsync((cheeseService, mockBackend) => {
+  it('GETs one cheese',
+    inject([CheeseService, MockBackend],
+    fakeAsync((cheeseService: CheeseService, mockBackend: MockBackend) => {
     spyOn(cheeseService, 'handleError');
-    let response;
+    let response: any;
     expectUrl(mockBackend, 'api/cheeses/7', cheese, RequestMethod.Get)
     cheeseService.getCheese(7)
       .then((success) => {
@@ -54,10 +55,11 @@ describe('CheeseService', () => {
     expect(cheeseService.handleError).not.toHaveBeenCalled();
   })));
 
-  it('GETs all the cheeses', inject([CheeseService, MockBackend],
-                                    fakeAsync((cheeseService, mockBackend) => {
+  it('GETs all the cheeses',
+    inject([CheeseService, MockBackend],
+    fakeAsync((cheeseService: CheeseService, mockBackend: MockBackend) => {
     spyOn(cheeseService, 'handleError');
-    let response;
+    let response: any;
     expectUrl(mockBackend, 'api/cheeses', [cheese], RequestMethod.Get);
     cheeseService.getCheeses()
       .then((success) => {
@@ -68,10 +70,11 @@ describe('CheeseService', () => {
     expect(cheeseService.handleError).not.toHaveBeenCalled();
   })));
 
-  it('creates a cheese', inject([CheeseService, MockBackend],
-                                   fakeAsync((cheeseService, mockBackend) => {
+  it('creates a cheese',
+    inject([CheeseService, MockBackend],
+    fakeAsync((cheeseService: CheeseService, mockBackend: MockBackend) => {
     spyOn(cheeseService, 'handleError');
-    let response;
+    let response: any;
     expectUrl(mockBackend, 'api/cheeses', cheese.name, RequestMethod.Post);
     cheeseService.create(cheese.name)
       .then((success) => {
@@ -83,9 +86,9 @@ describe('CheeseService', () => {
   })));
 
   it('updates a cheese', inject([CheeseService, MockBackend],
-                         fakeAsync((cheeseService, mockBackend) => {
+                         fakeAsync((cheeseService: CheeseService, mockBackend: MockBackend) => {
     spyOn(cheeseService, 'handleError');
-    let response;
+    let response: any;
     const newCheese = { name: 'foo', id: 7 };
     expectUrl(mockBackend, 'api/cheeses/7', newCheese, RequestMethod.Put);
     cheeseService.update(newCheese)
@@ -98,7 +101,7 @@ describe('CheeseService', () => {
   })));
 
   it('deletes cheese', inject([CheeseService, MockBackend],
-                         fakeAsync((cheeseService, mockBackend) => {
+                         fakeAsync((cheeseService: CheeseService, mockBackend: MockBackend) => {
     spyOn(cheeseService, 'handleError');
     let response;
     expectUrl(mockBackend, 'api/cheeses/7', null, RequestMethod.Delete);
@@ -112,9 +115,9 @@ describe('CheeseService', () => {
   })));
 
   it('catches errors', inject([CheeseService, MockBackend],
-                         fakeAsync((cheeseService, mockBackend) => {
+                         fakeAsync((cheeseService: CheeseService, mockBackend: MockBackend) => {
     spyOn(cheeseService, 'handleError');
-    mockBackend.connections.subscribe(connection => {
+    mockBackend.connections.subscribe((connection: any) => {
       connection.mockError(new Error('error'));
     });
     cheeseService.delete(7);
@@ -124,7 +127,7 @@ describe('CheeseService', () => {
 });
 
 function expectUrl(mockBackend: MockBackend, url: string, data: any, reqMethod: RequestMethod) {
-  mockBackend.connections.subscribe(connection => {
+  mockBackend.connections.subscribe((connection: any) => {
     expect(connection.request.url).toBe(url);
     expect(connection.request.headers.get('Content-Type')).toEqual('application/json');
     expect(connection.request.method).toBe(reqMethod);

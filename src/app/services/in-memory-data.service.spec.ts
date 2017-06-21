@@ -13,7 +13,7 @@ describe('Service: InMemoryData', () => {
     });
   });
 
-  beforeEach(inject([InMemoryDataService], (srvc) => {
+  beforeEach(inject([InMemoryDataService], (srvc: InMemoryDataService) => {
     service = srvc;
   }));
 

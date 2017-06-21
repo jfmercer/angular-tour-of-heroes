@@ -47,7 +47,7 @@ describe('CheeseSearchService', () => {
     fakeAsync(() => {
       const swiss: Cheese = {name: 'swiss', id: 7};
       // let response: Observable<[Cheese]>;
-      mockBackend.connections.subscribe(connection => {
+      mockBackend.connections.subscribe((connection: any) => {
         const resObj: object = { body: {data: [swiss]}};
         expect(connection.request.url).toBe('app/cheeses/?name=swiss');
         expect(connection.request.method).toBe(RequestMethod.Get);
